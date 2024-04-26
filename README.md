@@ -29,7 +29,7 @@ For day 1, you can get your input here: https://adventofcode.com/2023/day/1/inpu
 Copy the contents of that page into `1-trebuchet/input` and then run your solution code like so:  
   
 ```bash
-python 1-trebuchet/solution.py
+python 1-trebuchet/solution.py.py
 ```
   
 The output (your challenge submission) will then be printed to the console.  
