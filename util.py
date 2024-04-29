@@ -26,17 +26,18 @@ def pad_array(arr: Iterable[Iterable[T]], padding: T) -> list[list[T]]:
 
 def array_neighbors(
     arr: list[list[T]], pos_start: tuple[int, int], span: int = 1
-) -> list[T]:
+) -> dict[tuple[int, int], T]:
     if not arr or not arr[0]:
-        return list()
+        return dict()
     M = len(arr)
     N = max(len(row) for row in arr)
     a, b = pos_start
     if (1 <= a <= M - 2) and (1 <= b <= N - 2) and (1 <= b + span <= N - 1):
-        neighbors = arr[a - 1][b - 1 : b + span + 1]
-        neighbors.append(arr[a][b - 1])
-        neighbors.append(arr[a][b + span])
-        neighbors.extend(arr[a + 1][b - 1 : b + span + 1])
+        indices = [(a - 1, b - 1 + i) for i in range(span + 2)]
+        indices.append((a, b - 1))
+        indices.append((a, b + span))
+        indices.extend((a + 1, b - 1 + i) for i in range(span + 2))
+        neighbors = {idx: arr[idx[0]][idx[1]] for idx in indices}
         return neighbors
     else:
         raise IndexError

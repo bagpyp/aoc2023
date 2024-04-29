@@ -14,4 +14,4 @@ class TestSolution(TestCase):
 
     def test_solution(self):
         self.assertEqual(4361, solution(self.input))
-        self.assertEqual(0, solution(self.input, part=2))
+        self.assertEqual(467835, solution(self.input, part=2))

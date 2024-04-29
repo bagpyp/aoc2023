@@ -34,8 +34,10 @@ class TestUtil(TestCase):
                 "-7890-",
             ]
         ]
-        self.assertEqual(list("1234567890"), array_neighbors(arr, (4, 2), 2))
-        self.assertEqual(list("abcdefgh"), array_neighbors(arr, (1, 1)))
+        self.assertEqual(
+            list("1234567890"), list(array_neighbors(arr, (4, 2), 2).values())
+        )
+        self.assertEqual(list("abcdefgh"), list(array_neighbors(arr, (1, 1)).values()))
 
     def test_array_neigbors_boundaries(self):
         arr = [

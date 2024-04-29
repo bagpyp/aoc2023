@@ -1,4 +1,5 @@
 import re
+from collections import defaultdict
 
 from config import days
 from util import get_day, pad_array, array_neighbors
@@ -6,10 +7,7 @@ from util import get_day, pad_array, array_neighbors
 
 def solution(input, part=1):
     acc = 0
-    if part == 2:
-        # part 2 here
-        return 0
-    # part 1 here
+    gears = defaultdict(list)
     arr = input.splitlines()
     M = len(arr)
     N = len(arr[0])
@@ -20,9 +18,21 @@ def solution(input, part=1):
             num = match.group()
             pos = (i, match.span()[0])
             neighbors = array_neighbors(p_arr, pos, span=len(num))
-            if not all(n == "." for n in neighbors):
-                acc += int(num)
-    return acc
+            if part == 1:
+                neighbors = neighbors.values()
+                if not all(n == "." for n in neighbors):
+                    acc += int(num)
+            else:
+                for pos, val in neighbors.items():
+                    if val == "*":
+                        gears[pos].append(int(num))
+    if part == 1:
+        return acc
+    else:
+        for pos, nums in gears.items():
+            if len(nums) == 2:
+                acc += nums[0] * nums[1]
+        return acc
 
 
 if __name__ == "__main__":
