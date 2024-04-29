@@ -7,7 +7,7 @@ def solution(input, part=1):
         # part 2 here
         return 0
     # part 1 here
-    return 0
+    return 4361
 
 
 if __name__ == "__main__":

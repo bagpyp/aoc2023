@@ -13,5 +13,5 @@ class TestSolution(TestCase):
             self.input = f.read()
 
     def test_solution(self):
-        self.assertEqual(0, solution(self.input))
+        self.assertEqual(4361, solution(self.input))
         self.assertEqual(0, solution(self.input, part=2))
