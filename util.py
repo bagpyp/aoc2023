@@ -7,7 +7,7 @@ T = TypeVar("T")
 
 def get_day(file):
     parent_dir = os.path.basename(os.path.dirname(os.path.abspath(file)))
-    return int(parent_dir.split("-")[0]) - 1
+    return int(parent_dir.split("-")[0])
 
 
 def pad_array(arr: Iterable[Iterable[T]], padding: T) -> list[list[T]]:
